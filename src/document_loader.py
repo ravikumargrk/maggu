@@ -30,3 +30,16 @@ class DocumentLoader:
         """Check if the file format is supported"""
         _, ext = os.path.splitext(file_path)
         return ext in self.supported_formats
+    
+    def load_file(self, file_path: str) -> List[Document]:
+        """Load a single file based on its format"""
+        if not self.is_supported_format(file_path):
+            raise ValueError(f"Unsupported file format: {file_path}")
+        
+        _, ext = os.path.splittext(file_path)
+        if ext.lower() == ".pdf":
+            return self.load_pdf(file_path)
+        elif ext.lower() == ".txt":
+            return self.load_text(file_path)
+        else:
+            raise ValueError(f"No loader implemented for format: {ext}")
