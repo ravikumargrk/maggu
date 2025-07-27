@@ -35,3 +35,22 @@ You may also use different search methods and combine them for mor relevancy.
 
 ### 4. Step bank prompting
 User prompt string may not be the optimal way to search the vector db, for this, we can use LLM to first re-phrase the question so that it is more "researchable" and then use the re-phrased prompt string to search for chunks.
+
+
+
+
+## Planned project structure(still developing)
+RAG/
+    src/ # needed for source code organization
+        __init__.py
+        main.py
+        document_loader.py # handled loading different documents/information
+        text_spllitter.py # handles text chunking
+        embeddings.py # handles vector embeddings
+        database.py # handles vector storage/retrieval
+        search.py # handles search operations
+    data/
+        uploads/
+    chroma_db/
+    requirements.txt
+    README.md
