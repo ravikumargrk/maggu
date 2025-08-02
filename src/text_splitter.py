@@ -22,4 +22,3 @@ class TextSplitter:
     def split_text(self, text: str) -> List[Document]:
         """Split a single text into smaller chunks"""
         return self.splitter.create_documents([text])
-        
