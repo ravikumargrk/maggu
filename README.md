@@ -40,17 +40,19 @@ User prompt string may not be the optimal way to search the vector db, for this,
 
 
 ## Planned project structure(still developing)
+```
 RAG/
-    src/ # needed for source code organization
-        __init__.py
-        main.py
-        document_loader.py # handled loading different documents/information
-        text_spllitter.py # handles text chunking
-        embeddings.py # handles vector embeddings
-        database.py # handles vector storage/retrieval
-        search.py # handles search operations
-    data/
-        uploads/
-    chroma_db/
-    requirements.txt
-    README.md
+├── src/                      # source code
+│   ├── __init__.py
+│   ├── main.py               # entry point / CLI
+│   ├── document_loader.py    # load PDFs / TXT / (web)
+│   ├── text_splitter.py      # chunking logic
+│   ├── embeddings.py         # embedding model wrapper
+│   ├── database.py           # vector store (Chroma) ops
+│   └── search.py             # search / retrieval logic
+├── data/
+│   └── uploads/              # original uploaded files
+├── chroma_db/                # persisted Chroma index
+├── requirements.txt
+└── README.md
+```
