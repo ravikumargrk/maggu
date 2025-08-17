@@ -1,4 +1,4 @@
 /venv*
-scratch_book.ipynb
+#scratch_book.ipynb
 *.pdf
 /nltk_data*

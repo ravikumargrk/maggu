@@ -44,15 +44,43 @@ User prompt string may not be the optimal way to search the vector db, for this,
 RAG/
 ├── src/                      # source code
 │   ├── __init__.py
-│   ├── main.py               # entry point / CLI
+│   ├── main.py               # entry point / CLI/ orchestrator
 │   ├── document_loader.py    # load PDFs / TXT / (web)
 │   ├── text_splitter.py      # chunking logic
 │   ├── embeddings.py         # embedding model wrapper
-│   ├── database.py           # vector store (Chroma) ops
-│   └── search.py             # search / retrieval logic
+│   ├── vector_store.py           # vector store (Chroma) wrapper
+│   └── retriever.py             # search / retrieval logic
 ├── data/
-│   └── uploads/              # original uploaded files
-├── chroma_db/                # persisted Chroma index
+│   └── uploads/              # user uploaded files
+├── chroma_db/                # persisted Chroma vector index
 ├── requirements.txt
 └── README.md
+
+Conceptual architecture:
+1. Ingest: Load raw sources (.pdf/.txt/Web Scraped)- > documents -> CLI / orchestrator
+2. Chunk: Spit into overlap chunks- > chunks (with chunk_id + source) -> document_loader.py
+3. Embed: Convert chunks to vectors -> Embeddings -> 
+4. Index: store (vectors + metadata) in vector DB (Chroma)
+5. Retrieve: Embed query -> similarity search (top k)
+6. Augument: Build context from retrieved chunks
+7. generate: Pass (question + context) to LLM
+8. Optional: Re-ranking, query rewriting, caching, feedback loop
+
 ```
+
+
+![alt text](image.png)
+
+
+
+Run:
+source venv/bin/activate
+pip install -r requirements.txt
+ollama pull nomic-embed-text
+export EMBEDDING_BACKEND=ollama
+export EMBEDDING_MODEL=nomic-embed-text
+rm -rf chroma_db/
+python -m src.main
+> add
+File path (.pdf/.txt): data/MLElect.pdf
+> search machine learning

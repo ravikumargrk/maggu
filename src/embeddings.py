@@ -1,17 +1,22 @@
-from langchain_community.embeddings.ollama import OllamaEmbeddings
+import os, warnings
 
-class EmbeddingModel:
-    """Handles vector embeddings for documents and queries"""
-    
-    def __init__(self, model_name: str = "nomic-embed-text"):
-        """ 
-        Initialize the embedding model
-        Args:
-        model_name : Ollama model to use for embeddings Default is nomic-embed-text 
-        """
-       self.model_name = model_name
-       self.embeddings = OllamaEmbeddings(model= model_name)
+BACKEND = os.getenv("EMBEDDING_BACKEND", "ollama").lower()
+MODEL_OVERRIDE = os.getenv("EMBEDDING_MODEL")
 
-       def get_embeddings(self):
-        """Return the embedding model for use with vector stores"""
-        return self.embeddings
+if BACKEND == "ollama":
+    try:
+        from langchain_ollama import OllamaEmbeddings
+    except ImportError:
+        from langchain_community.embeddings import OllamaEmbeddings  # type: ignore
+        warnings.warn("Install langchain-ollama for updated OllamaEmbeddings.", DeprecationWarning)
+
+    def get_embedding_function(model: str = None):
+        model = model or MODEL_OVERRIDE or "nomic-embed-text"
+        print(f"[embeddings] Using Ollama model: {model}")
+        return OllamaEmbeddings(model=model)
+else:
+    from langchain_community.embeddings import SentenceTransformerEmbeddings
+    def get_embedding_function(model: str = None):
+        model = model or MODEL_OVERRIDE or "all-MiniLM-L6-v2"
+        print(f"[embeddings] Using sentence-transformers model: {model}")
+        return SentenceTransformerEmbeddings(model_name=model)
