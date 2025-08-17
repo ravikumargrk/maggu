@@ -1,3 +1,5 @@
+## Author vipuldogra3@gmail.com and ravikumar.grk@hotmail.com 
+
 # RAG
 A retrieval augmented generation project
 
@@ -35,3 +37,54 @@ You may also use different search methods and combine them for mor relevancy.
 
 ### 4. Step bank prompting
 User prompt string may not be the optimal way to search the vector db, for this, we can use LLM to first re-phrase the question so that it is more "researchable" and then use the re-phrased prompt string to search for chunks.
+
+
+
+
+## Planned project structure(still developing)
+```
+RAG/
+├── src/                      # source code
+│   ├
+│   ├── main.py               # entry point / CLI/ orchestrator
+│   ├── document_loader.py    # load PDFs / TXT / (web)
+│   ├── text_splitter.py      # chunking logic
+│   ├── embeddings.py         # embedding model wrapper
+│   ├── vector_store.py           # vector store (Chroma) wrapper
+│   └── retriever.py             # search / retrieval logic
+├── data/
+│   └── /              # user uploaded files
+├── chroma_db/                # persisted Chroma vector index
+├── requirements.txt
+└── README.md
+
+Conceptual architecture:
+1. Ingest: Load raw sources (.pdf/.txt/Web Scraped)- > documents -> CLI / orchestrator
+2. Chunk: Spit into overlap chunks- > chunks (with chunk_id + source) -> document_loader.py
+3. Embed: Convert chunks to vectors -> Embeddings -> 
+4. Index: store (vectors + metadata) in vector DB (Chroma)
+5. Retrieve: Embed query -> similarity search (top k)
+6. Augument: Build context from retrieved chunks
+7. generate: Pass (question + context) to LLM
+8. Optional: Re-ranking, query rewriting, caching, feedback loop
+
+```
+
+
+![alt text](image.png)
+
+
+```
+Run:
+source venv/bin/activate
+pip install -r requirements.txt
+ollama pull nomic-embed-text
+export EMBEDDING_BACKEND=ollama
+export EMBEDDING_MODEL=nomic-embed-text
+rm -rf chroma_db/
+python -m src.main
+> add
+File path (.pdf/.txt): data/MLElect.pdf
+> search machine learning
+
+```
