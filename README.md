@@ -1,3 +1,5 @@
+## Author vipuldogra3@gmail.com and ravikumar.grk@hotmail.com 
+
 # RAG
 A retrieval augmented generation project
 
@@ -51,7 +53,7 @@ RAG/
 │   ├── vector_store.py           # vector store (Chroma) wrapper
 │   └── retriever.py             # search / retrieval logic
 ├── data/
-│   └── uploads/              # user uploaded files
+│   └── /              # user uploaded files
 ├── chroma_db/                # persisted Chroma vector index
 ├── requirements.txt
 └── README.md
