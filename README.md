@@ -43,7 +43,7 @@ User prompt string may not be the optimal way to search the vector db, for this,
 ```
 RAG/
 ├── src/                      # source code
-│   ├── __init__.py
+│   ├
 │   ├── main.py               # entry point / CLI/ orchestrator
 │   ├── document_loader.py    # load PDFs / TXT / (web)
 │   ├── text_splitter.py      # chunking logic
@@ -72,7 +72,7 @@ Conceptual architecture:
 ![alt text](image.png)
 
 
-
+```
 Run:
 source venv/bin/activate
 pip install -r requirements.txt
@@ -84,3 +84,5 @@ python -m src.main
 > add
 File path (.pdf/.txt): data/MLElect.pdf
 > search machine learning
+
+```
