@@ -1,5 +1,3 @@
-## Author vipuldogra3@gmail.com and ravikumar.grk@hotmail.com 
-
 # RAG
 A retrieval augmented generation project
 
