@@ -1,4 +1,9 @@
-/venv*
-#scratch_book.ipynb
-*.pdf
-/nltk_data*
+# im adding git ignore so that you keep data at right place where expected and dont push it by mistake
+.python-version
+# raw data stays here as markdowns
+embedding/raw_data
+# embedded data stays here
+embedding/embedded_data
+# offline install modules
+modules/
+embedded_data/
