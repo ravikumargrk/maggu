@@ -1,7 +1,10 @@
 # im adding git ignore so that you keep data at right place where expected and dont push it by mistake
 
 # raw data stays here as markdowns
-embedding/raw_data
+embedding/raw_data/chunks
+embedding/raw_data/html_content
+embedding/raw_data/md_content
+embedding/raw_data/*.json
 # embedded data stays here
 embedding/embedded_data
 # offline install modules
