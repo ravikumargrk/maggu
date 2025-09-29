@@ -5,7 +5,7 @@
 # results = collection.query(query_embeddings=[q_emb], n_results=2)
 # print(results)
 
-MODEL='embeddinggemma:300m'
+MODEL='mxbai-embed-large:335m'
 N_CHUNKS=5
 import json 
 with open(r'embedding/raw_data/DMAS_CHUNK_META.json', 'r') as meta_data_fp:
