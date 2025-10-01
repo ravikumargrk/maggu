@@ -1,7 +1,6 @@
 MODEL='mxbai-embed-large:335m'
 DB_PATH=r'./embedded_data/faiss'
 
-import ollama
 from langchain_community.vectorstores import FAISS
 from langchain_ollama import OllamaEmbeddings
 
