@@ -1,0 +1,7 @@
+
+Running on local URL:  http://127.0.0.1:7863
+
+Thanks for being a Gradio user! If you have questions or feedback, please join our Discord server and chat with us: https://discord.gg/feTf9x3ZSB
+
+To create a public link, set `share=True` in `launch()`.
+Keyboard interruption in main thread... closing server.
