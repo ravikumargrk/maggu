@@ -10,3 +10,4 @@ embedding/embedded_data
 # offline install modules
 modules/
 embedded_data/
+*.log
