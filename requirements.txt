@@ -3,3 +3,4 @@ faiss-gpu==1.7.2
 langchain-community==0.3.30
 langchain-ollama==0.3.8
 gradio==4.44.1
+Flask-RESTful==0.3.10
